@@ -1,19 +1,22 @@
 package com.example.net.movies.flex.school.movies.app.library.ui.home;
 
+
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.net.movies.flex.school.movies.app.library.models.popular.PopularResponse;
+import com.example.net.movies.flex.school.movies.app.library.repositories.MainRepository;
 
 public class HomeViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private MainRepository repo;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        repo = new MainRepository();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<PopularResponse> getPopularMovies(String key) {
+        return repo.getPopularMovies(key);
     }
+
 }
